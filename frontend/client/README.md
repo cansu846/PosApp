@@ -30,3 +30,10 @@ flex
 Sırasıyla flex-grow, flex-shrink ve flex-basis özelliklerinin kısa kullanımıdır. İlk değeri zorunlu olup (shrink ve basis) değerlerini belirtmek zorunlu değildir. Varsayılan olarak 0 1 auto değerine sahiptir
 
 Offset terimi, bir öğenin bir diğerine veya konteynerine göre konumlandırılmasını ifade eder. Offset, genellikle öğenin yerleşim konumunu belirlemek için kullanılan değerlerdir. Bu, özellikle CSS positioning (konumlandırma) özellikleriyle birlikte kullanılır.
+
+
+CSS'de overflow özelliği, bir elementin içeriği, elementin belirlenen boyutlarını (genişlik veya yükseklik) aştığında, bu içeriğin nasıl işleneceğini kontrol eder. Bu özellik, taşma durumlarında içeriğin görünürlüğünü, kaydırılabilirliğini veya kırpılmasını yönetmek için kullanılır.
+
+::-webkit-scrollbar
+Bu, WebKit tabanlı tarayıcılarda scrollbar'ı (kaydırma çubuğunu) seçmek için kullanılan pseudo-element'tir.
+Tarayıcının yerleşik kaydırma çubuğunu özelleştirmek veya gizlemek için kullanılır.
