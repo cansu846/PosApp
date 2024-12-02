@@ -37,3 +37,31 @@ CSS'de overflow özelliği, bir elementin içeriği, elementin belirlenen boyutl
 ::-webkit-scrollbar
 Bu, WebKit tabanlı tarayıcılarda scrollbar'ı (kaydırma çubuğunu) seçmek için kullanılan pseudo-element'tir.
 Tarayıcının yerleşik kaydırma çubuğunu özelleştirmek veya gizlemek için kullanılır.
+
+
+object-cover:
+
+Resmin kapsayıcısının boyutlarını dolduracak şekilde ölçeklenmesini sağlar.
+Resim, en-boy oranını koruyarak kapsayıcı alanı tamamen doldurur ve taşan kısımlar kırpılır.
+
+w-full:
+
+Genişliği (width) %100 olarak ayarlar.
+Yani, resim kapsayıcı öğenin tüm genişliğini kaplar.
+
+
+repeat(auto-fill, minmax(150px, 1fr)):
+Bu yapı, sütunların otomatik ve dinamik bir şekilde oluşturulmasını sağlar:
+
+repeat(...):
+
+Grid düzeninde tekrar eden bir model tanımlar.
+auto-fill: Mevcut alana mümkün olduğunca fazla sütun yerleştirir.
+Kapsayıcı genişledikçe yeni sütunlar eklenir.
+Yeterli alan yoksa sütunlar küçülmez, mevcut sütun sayısını korur.
+minmax(150px, 1fr):
+
+Her sütunun minimum ve maksimum genişliğini ayarlar:
+150px: Sütunun genişliği en az 150px olur.
+1fr: Sütunun genişliği, kapsayıcı elemanın kullanılabilir alanına göre ayarlanır.
+Bu, sütunların 150px'den küçük olmasını engellerken, kalan alanı eşit şekilde paylaşmasını sağlar.

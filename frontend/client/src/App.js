@@ -2,6 +2,7 @@ import './App.css';
 import React from 'react';
 import Header from './components/header/Header';
 import Category from './components/category/Category';
+import Product from './components/product/Product';
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
           <Category />
         </div>
         <div className='product flex-[8]'>
-          Product
+          <Product />
         </div>
         <div className='cardtotal'>
           Card Total
