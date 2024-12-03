@@ -20,7 +20,7 @@ function CartSummary({showModal}) {
                         <p className='text-green-700'>60£</p>
                     </div>
                     <Button type='primary' size='middle'
-                        className='w-full mt-4' onClick={showModal} htmlType="submit" >Create Order </Button>
+                        className='w-full mt-4' onClick={showModal} >Create Order </Button>
                 </Card>
     </div>
   )

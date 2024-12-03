@@ -41,7 +41,7 @@ function Header() {
            <span className='md:text-xs text-[10px]'>Basket</span>
            </Link>
 
-           <Link to="/" className='flex flex-col hover:text-[#40a9ff]'>
+           <Link to="/invoice" className='flex flex-col hover:text-[#40a9ff]'>
            <span><CopyOutlined className='md:text-2xl text-xl'/></span>
            <span className='md:text-xs text-[10px]'>Invoice</span>
            </Link>
