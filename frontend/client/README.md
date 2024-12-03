@@ -82,3 +82,12 @@ Sonuç: Boş alan paylaştırılırken, bu eleman diğer elemanlara göre 8 kat 
 
 
 Arbitrary values (özgün değerler), Tailwind CSS'de önceden tanımlı sınıflar dışında özel değerler kullanmanız gerektiğinde devreye girer. Bu, tasarım ihtiyaçlarına göre daha fazla esneklik sağlar.
+
+Z-INDEX
+Özellik z-index bir öğenin yığın sırasını belirtir.
+
+Daha büyük yığın sırasına sahip bir eleman her zaman daha düşük yığın sırasına sahip bir elemanın önündedir.
+
+Not: yalnızca konumlandırılmış öğelerde (konum: mutlak, konum: göreli, konum: sabit veya konum: yapışkan) ve esnek öğelerde ( display:flexz-index öğelerinin doğrudan alt öğesi olan öğeler ) çalışır.
+
+Not: İki konumlandırılmış eleman belirtilmeden üst üste gelirse z-index , HTML kodunda en son konumlandırılan eleman en üstte gösterilir. 

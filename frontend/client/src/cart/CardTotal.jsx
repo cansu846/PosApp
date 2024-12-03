@@ -17,7 +17,7 @@ function CardTotal() {
       </div>
       {/* overflow-auto: Uzun içeriklerin kaydırılabilir olmasını sağlar.
         flex-1: Bu alan, kalan boşluğu doldurur  */}
-      <div className='cart-items overflow-auto'>
+      <div className='cart-items overflow-y-auto'>
         <ul className='cart-list'>
 
           <li className='cart-item py-2 flex justify-between items-center'>

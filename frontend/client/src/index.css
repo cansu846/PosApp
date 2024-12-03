@@ -4,13 +4,26 @@
 
 body {
   margin: 0;
-  overflow: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.category::-webkit-scrollbar{
-display: none;
+
+
+/* 768px veya daha geniş ekran boyutlarına özel CSS kurallarını tanımlar.
+Bu, responsive design (duyarlı tasarım) için kullanılır.
+Ekran genişliği 768 pikselden küçük olduğunda bu kurallar uygulanmaz.  */
+
+@media (min-width: 768px){
+  body {
+    /* overflow: hidden; */
+  }
+  
+  .category::-webkit-scrollbar{
+  display: none;
+  }
+
+  
 }

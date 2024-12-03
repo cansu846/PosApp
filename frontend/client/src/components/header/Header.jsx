@@ -24,8 +24,8 @@ function Header() {
 
         </div>
         <div className='menu-links flex justify-between items-center gap-8
-         md:static fixed bottom-0 md:w-auto w-screen md:bg-transparent
-          bg-white md:border-t-0 border-t md:px-0 px-10 md:pt-0 pt-3'>
+         md:static fixed z-40 bottom-0 md:w-auto w-screen md:bg-transparent
+          bg-white md:border-t-0 border-t md:px-0 px-10 md:pt-0 pt-2'>
            <a href="/" className='flex flex-col hover:text-[#40a9ff]'>
            <span><HomeOutlined className='md:text-2xl text-xl'/></span>
            <span className='md:text-xs text-[10px]'>Home</span>
