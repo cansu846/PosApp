@@ -1,29 +1,25 @@
 import './App.css';
 import React from 'react';
+import HomePage from './pages/HomePage';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import CartPage from './pages/CartPage';
 import Header from './components/header/Header';
-import Category from './components/category/Category';
-import Product from './components/product/Product';
-import CardTotal from './cart/CardTotal';
 
 function App() {
 
   return (
-  <>
-      <Header />
-      <div className="home flex flex-col md:flex-row px-3 
-      gap-3">
-
-        <div className='category overflow-auto 
-      max-h-[calc(100vh_-_112px)]'>
-          <Category />
-        </div>
-        <div className='product flex-[8] overflow-auto  max-h-[calc(100vh_-_112px)]'>
-          <Product />
-        </div>
-        <div className='cardtotal'>
-          <CardTotal />
-        </div>
-      </div>
+    <>
+    <Header />
+ <BrowserRouter>
+    <Routes >
+      <Route path="/" element={<HomePage />} />
+      <Route path="/cart" element={<CartPage />} />
+      <Route path="/" element={<HomePage />}>
+        {/* <Route index element={<RecentActivity />} /> */}
+        {/* <Route path="/cart/" element={<CartPage />} /> */}
+      </Route>
+    </Routes>
+  </BrowserRouter>
     </>
   );
 }
