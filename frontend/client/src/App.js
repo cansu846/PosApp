@@ -3,6 +3,7 @@ import React from 'react';
 import Header from './components/header/Header';
 import Category from './components/category/Category';
 import Product from './components/product/Product';
+import CardTotal from './cart/CardTotal';
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
       <Header />
       <div className="content flex justify-between px-3 gap-3">
 
-        <div className='category flex-2 overflow-auto 
+        <div className='category overflow-auto 
       max-h-[calc(100vh-_-112px)]'>
           <Category />
         </div>
@@ -19,7 +20,7 @@ function App() {
           <Product />
         </div>
         <div className='cardtotal'>
-          Card Total
+          <CardTotal />
         </div>
       </div>
     </div>

@@ -65,3 +65,20 @@ Her sütunun minimum ve maksimum genişliğini ayarlar:
 150px: Sütunun genişliği en az 150px olur.
 1fr: Sütunun genişliği, kapsayıcı elemanın kullanılabilir alanına göre ayarlanır.
 Bu, sütunların 150px'den küçük olmasını engellerken, kalan alanı eşit şekilde paylaşmasını sağlar.
+
+tracking-wide : letter-spacing: 0.025em;
+tracking-*: harfler arasında boşkugu ayarlar
+
+Tailwind CSS'de flex-* sınıfları, flex-grow, flex-shrink ve flex-basis özelliklerini ayarlamak için kullanılır. Bu özellikler, Flexbox düzeninde bir elemanın nasıl büyüdüğünü, küçüldüğünü ve başlangıç genişliğini kontrol eder.
+
+flex-2
+Bu, flex-grow özelliğinin 2 olarak ayarlandığını belirtir.
+Anlamı: Konteynerdeki boş alan paylaştırılırken, bu eleman diğer elemanlara göre 2 kat daha fazla büyür.
+Eğer başka bir elemanda flex-1 varsa, flex-2 elemanının genişliği onun iki katı olur.
+2. flex-[8]
+Bu, Tailwind'in arbitrary value (özgün değer) özelliği kullanılarak belirlenmiştir.
+Anlamı: flex-grow değeri 8 olarak ayarlanır.
+Sonuç: Boş alan paylaştırılırken, bu eleman diğer elemanlara göre 8 kat daha fazla büyür.
+
+
+Arbitrary values (özgün değerler), Tailwind CSS'de önceden tanımlı sınıflar dışında özel değerler kullanmanız gerektiğinde devreye girer. Bu, tasarım ihtiyaçlarına göre daha fazla esneklik sağlar.
