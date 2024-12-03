@@ -1,7 +1,14 @@
-import { Button, Card, Table } from 'antd';
-import React from 'react'
+import { Button, Card, Modal, Table } from 'antd';
+import React, { useState } from 'react'
+import CartInvoice from '../cart/CartInvoice';
 
 function CartPage() {
+    const [isModalOpen, setIsModelOpen] = useState(false);
+
+    const showModal = () => {
+        setIsModelOpen(!isModalOpen);
+    }
+
     const dataSource = [
         {
             key: '1',
@@ -38,27 +45,31 @@ function CartPage() {
     return (
         <div className='mx-4'>
             <div className=''>
-            <Table dataSource={dataSource} columns={columns} className='rounded-md' pagination={false}/>
+                <Table dataSource={dataSource} columns={columns} className='rounded-md' pagination={false} />
             </div>
 
             <div className='cart-total flex justify-end mt-4'>
                 <Card title="" style={{ width: 300 }}>
                     <div className='flex flex-row justify-between'>
-                    <p className='font-bold'>Subtotal</p>
-                    <p>30£</p>
+                        <p className='font-bold'>Subtotal</p>
+                        <p>30£</p>
                     </div>
 
                     <div className='flex flex-row justify-between py-2'>
-                    <p className='font-bold'>KDV %8</p>
-                    <p className='text-red-700'>+30£</p>
+                        <p className='font-bold'>KDV %8</p>
+                        <p className='text-red-700'>+30£</p>
                     </div>
 
                     <div className='flex flex-row justify-between'>
-                    <p className='font-bold'>Total</p>
-                    <p className='text-green-700'>60£</p>
+                        <p className='font-bold'>Total</p>
+                        <p className='text-green-700'>60£</p>
                     </div>
-                    <Button type='primary' size='large' className='w-full mt-4'>Create Order</Button>
+                    <Button type='primary' size='large'
+                        className='w-full mt-4' onClick={showModal} >Create Order </Button>
                 </Card>
+                
+                <CartInvoice isModalOpen={isModalOpen} showModal={showModal}/>
+                
             </div>
         </div>
     )
