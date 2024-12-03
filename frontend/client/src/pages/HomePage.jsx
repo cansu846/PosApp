@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/header/Header';
 import Category from '../components/category/Category';
 import Product from '../components/product/Product';
-import CardTotal from '../cart/CardTotal';
+import CardTotal from '../components/cart/CardTotal';
 
 function HomePage() {
   return (

@@ -1,6 +1,7 @@
-import { Button, Card, Modal, Table } from 'antd';
+import { Table } from 'antd';
 import React, { useState } from 'react'
-import CartInvoice from '../cart/CartInvoice';
+import CreateInvoice from '../components/cart/CreateInvoice';
+import CartSummary from '../components/cart/CartSummary';
 
 function CartPage() {
     const [isModalOpen, setIsModelOpen] = useState(false);
@@ -49,26 +50,9 @@ function CartPage() {
             </div>
 
             <div className='cart-total flex justify-end mt-4'>
-                <Card title="" style={{ width: 300 }}>
-                    <div className='flex flex-row justify-between'>
-                        <p className='font-bold'>Subtotal</p>
-                        <p>30£</p>
-                    </div>
-
-                    <div className='flex flex-row justify-between py-2'>
-                        <p className='font-bold'>KDV %8</p>
-                        <p className='text-red-700'>+30£</p>
-                    </div>
-
-                    <div className='flex flex-row justify-between'>
-                        <p className='font-bold'>Total</p>
-                        <p className='text-green-700'>60£</p>
-                    </div>
-                    <Button type='primary' size='large'
-                        className='w-full mt-4' onClick={showModal} >Create Order </Button>
-                </Card>
-                
-                <CartInvoice isModalOpen={isModalOpen} showModal={showModal}/>
+               
+                <CartSummary showModal={showModal} />
+                <CreateInvoice isModalOpen={isModalOpen} showModal={showModal}/>
                 
             </div>
         </div>
