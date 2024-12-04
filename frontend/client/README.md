@@ -91,3 +91,10 @@ Daha büyük yığın sırasına sahip bir eleman her zaman daha düşük yığ�
 Not: yalnızca konumlandırılmış öğelerde (konum: mutlak, konum: göreli, konum: sabit veya konum: yapışkan) ve esnek öğelerde ( display:flexz-index öğelerinin doğrudan alt öğesi olan öğeler ) çalışır.
 
 Not: İki konumlandırılmış eleman belirtilmeden üst üste gelirse z-index , HTML kodunda en son konumlandırılan eleman en üstte gösterilir.
+
+ h-screen: Eleman yüksekliğini ekranın tamamına (viewport height) eşitler.height: 100vh;
+
+ h-full: Elemanın yüksekliğini, ebeveyn elemanın yüksekliği kadar yapar.height: 100%
+
+ Tailwind CSS'de bir sınıfın üzerine başka bir sınıf yazıldığında, spesifikliği daha yüksek olan sınıf galip gelir. Ancak ! işareti eklenirse, bu sınıf her zaman uygulanır.
+Eşdeğer CSS: !important gibi çalışır
