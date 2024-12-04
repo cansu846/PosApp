@@ -46,13 +46,13 @@ function Header() {
            <span className='md:text-xs text-[10px]'>Invoice</span>
            </Link>
          
-           <Link to="/" className='flex flex-col hover:text-[#40a9ff]'>
+           <Link to="/customer" className='flex flex-col hover:text-[#40a9ff]'>
            <span><UserOutlined className='md:text-2xl text-xl'/></span>
            <span className='md:text-xs text-[10px]'>User</span>
            </Link>
 
            
-           <Link to="/" className='flex flex-col hover:text-[#40a9ff]'>
+           <Link to="/statistic" className='flex flex-col hover:text-[#40a9ff]'>
            <span><BarChartOutlined className='md:text-2xl text-xl'/></span>
            <span className='md:text-xs text-[10px]'>Statistic</span>
            </Link>
