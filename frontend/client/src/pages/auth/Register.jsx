@@ -55,11 +55,25 @@ function Register() {
                             <Form.Item
                                 label="Password Again"
                                 name={"passwordAgain"}
+                                //yukarıda tanımlı name:{"password"} ile uyuşmalı
+                                dependencies={["password"]}
                                 rules={[
                                     {
                                         required: true,
                                         message: "Password again can not be empty!",
                                     },
+                                    ({ getFieldValue }) => ({
+                                        validator(_, value) {
+                                          if (!value || getFieldValue("password") === value) {
+                                            return Promise.resolve();
+                                          }
+                                          return Promise.reject(
+                                            new Error(
+                                              "Passwords must be same!"
+                                            )
+                                          );
+                                        },
+                                      }),
                                 ]}
                             >
                                 <Input.Password />
