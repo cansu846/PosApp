@@ -7,6 +7,7 @@ import CardTotal from '../components/cart/CardTotal';
 function HomePage() {
 
   const [categories, setCategories] = useState([]);
+  const [products, setProducts] = useState([]);
 
   const getCategories = async () => {
     try {
@@ -22,8 +23,23 @@ function HomePage() {
     }
   }
 
+  const getProducts = async () => {
+    try {
+      var response = await fetch("http://localhost:5000/api/product/get-all");
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+      const json = await response.json();
+      console.log(json);
+      setProducts(json);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
   useEffect(() => {
     getCategories();
+    getProducts();
   }, []);
 
 
@@ -39,7 +55,7 @@ function HomePage() {
           <Category categories={categories} setCategories={setCategories}/>
         </div>
         <div className='product flex-[8] overflow-auto  max-h-[calc(100vh_-_112px)]'>
-          <Product />
+          <Product products={products} setProducts={setProducts} categories={categories} />
         </div>
         <div className='cardtotal'>
           <CardTotal />

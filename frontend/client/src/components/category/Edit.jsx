@@ -21,6 +21,8 @@ function Edit({ isEditCategoryModalOpen,
                 method: "PUT",
                 //When sending data to a web server, the data has to be a string.
                 //Convert a JavaScript object into a string with 
+                //spread özelliği ile sonradan eklenen key varsa yenid deger 
+                //üzerine yazılır yoksa yeni key: value olarak eklenir.
                 body: JSON.stringify({...values, categoryId: editingRow._id}),
                 headers: { "Content-type": "application/json; charset=UTF-8" },
             });
