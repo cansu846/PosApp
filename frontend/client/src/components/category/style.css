@@ -1,0 +1,4 @@
+.category-item{
+    @apply bg-green-700 p-10 mb-3 text-white cursor-pointer 
+        hover:bg-pink-700 transition-all text-center;
+}

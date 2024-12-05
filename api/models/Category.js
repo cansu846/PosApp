@@ -5,7 +5,7 @@ const  CategorySchema = mongoose.Schema(
         title: {type: String, require:true}
     },
     //oluşturuldugu zaman öğrenmeye yarar
-    {timeStamp:true}
+    {timestamps:true}
 );
 // categories: table name
 const Category = mongoose.model("categories", CategorySchema);

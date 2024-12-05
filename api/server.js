@@ -11,6 +11,10 @@ const port = 5000;
 //routes
 
 const categoryRoute = require("./routes/categories.js");
+const productRoute = require("./routes/products.js");
+const billRoute= require("./routes/bills.js");
+const authRoute= require("./routes/auth.js");
+const userRoute= require("./routes/users.js");
 
 
 dotenv.config(); 
@@ -34,6 +38,10 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/api/category", categoryRoute);
+app.use("/api/product", productRoute);
+app.use("/api/bill", billRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/user", userRoute);
 
 
 app.listen(port, () => {
