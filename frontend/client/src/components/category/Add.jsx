@@ -2,7 +2,7 @@
 import React from 'react'
 import { Button, Form, Input, Modal, message } from 'antd';
 
-function Add({ categories, setCategories, isModalOpen, handleIsModalOpen }) {
+function Add({ categories, setCategories, isAddCategoryModalOpen, handleIsAddCategoryModalOpen }) {
 
     //this is use clean field after added
     const [form] = Form.useForm();
@@ -32,7 +32,7 @@ function Add({ categories, setCategories, isModalOpen, handleIsModalOpen }) {
 
     return (
         <div>
-            <Modal title="Basic Modal" open={isModalOpen} onCancel={handleIsModalOpen} footer={false}>
+            <Modal title="Basic Modal" open={isAddCategoryModalOpen} onCancel={handleIsAddCategoryModalOpen} footer={false}>
 
                 <Form layout='vertical' onFinish={onFinish} form={form}>
                     <Form.Item
