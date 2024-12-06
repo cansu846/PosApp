@@ -5,6 +5,10 @@ import { useNavigate } from 'react-router-dom';
 
 function Product({ products, setProducts, categories }) {
     const [isAddProductModalOpen, setIsAddProductModalOpen ] = useState(false);
+    //URL'leri değiştirme veya farklı rotalara geçiş yapma işlemleri için tercih edilir.
+    //Kullanıcı bir butona tıkladığında veya belirli bir işlem tamamlandığında
+    //Kullanıcıyı belirli parametrelerle bir sayfaya yönlendirebilir.
+    //useNavigate, tarayıcı geçmişini yönetir, yani ileri ve geri yönlendirme yapabilirsiniz
     const navigate = useNavigate();
 
     const handleIsAddProductModalOpen = ()=>{
