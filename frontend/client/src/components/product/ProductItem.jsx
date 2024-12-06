@@ -13,6 +13,7 @@ function ProductItem({ product }) {
     const handleClick = () => {
         dispatch(addProduct({...product, quantity:1}));
     }
+    
     console.log("cartıtems: ", cart.cartItems);
     return (
         <div className='product-item border hover:shadow-lg transition-all
