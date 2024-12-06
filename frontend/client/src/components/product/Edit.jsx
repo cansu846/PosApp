@@ -170,7 +170,7 @@ function Edit() {
             <Table rounded dataSource={products} columns={columns} scroll={{ x: 1000, y: 600 }} />
 
             <Modal title="Basic Modal" open={isEditProductModalOpen} onCancel={() => { setIsEditProductModalOpen(false) }} footer={false}>
-                <Form layout='vertical' onFinish={onFinish} form={form} initialValues={editingItem} form={form}>
+                <Form layout='vertical' onFinish={onFinish} form={form} initialValues={editingItem}>
                     <Form.Item
                         label="Product Name:"
                         //this must be the same in Category tabel at database
