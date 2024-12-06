@@ -17,7 +17,10 @@ function HomePage() {
       }
       const json = await response.json();
       console.log(json);
-      setCategories(json);
+      setCategories(json.map((category)=>(
+        {...category, value: category.title}
+      ))
+  );
     } catch (error) {
       console.error(error.message);
     }

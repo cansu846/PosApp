@@ -19,14 +19,23 @@ function Add({ products, setProducts, categories, isAddProductModalOpen, handleI
             });
             message.success("Product added succesfully.");
             form.resetFields();
-            setProducts([...products,
-            {
-                _id: Math.random(),
-                title: values.title,
-                price: values.price,
-                category: values.category,
-                // img: values.img
-            }
+            setProducts([
+                //spread ile objeler ortaya çıkar
+                ...products,
+                {
+                    ...values,
+                    _id: Math.random(),
+                    //price degerini numbera cevirmedigimde db de cevirili olarak kayıt edildi. ama yinede burada cevirdim
+                    price : Number(values.price)
+                }
+                //yukarıdaki ile aynı işlevi görür.
+            // {
+            //     _id: Math.random(),
+            //     title: values.title,
+            //     price: values.price,
+            //     category: values.category,
+            //     // img: values.img
+            // }
             ]);
         } catch (error) {
             console.log(error);
