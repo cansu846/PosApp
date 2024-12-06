@@ -1,8 +1,12 @@
 import { Button } from 'antd'
 import React from 'react'
 import { ClearOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { deleteProduct } from '../../redux/cartSlice';
 
 function CardTotal() {
+  const dispatch = useDispatch();
+  const {cartItems} = useSelector((state)=>state.cart);
   return (
     // max-h:
     // Bu, maksimum yükseklik (maximum height) anlamına gelir.
@@ -17,64 +21,39 @@ function CardTotal() {
       </div>
       {/* overflow-auto: Uzun içeriklerin kaydırılabilir olmasını sağlar.
         flex-1: Bu alan, kalan boşluğu doldurur  */}
-      <div className='cart-items overflow-y-auto'>
-        <ul className='cart-list'>
-
-          <li className='cart-item py-2 flex justify-between items-center'>
-
-            <div className='content-item flex justify-between '>
-              <img src="https://i.lezzet.com.tr/images-xxlarge-secondary/elma-nasil-yenir-221135ca-f383-474c-a4f5-ad02a45db978.jpg" alt="not found"
-                className='h-15 w-16 object-cover' />
-              <div className='flex flex-col mr-auto ml-2'>
-                <b>Elma</b>
-                <span>9.99£</span>
+      
+          <div className='cart-items overflow-y-auto'>
+          <ul className='cart-list pr-2'>
+          {
+          cartItems.map((item)=>( 
+            <li className='cart-item py-2 flex justify-between items-center' >
+  
+              <div className='content-item flex justify-between' onClick={()=>dispatch(deleteProduct(item))}>
+                <img src="https://i.lezzet.com.tr/images-xxlarge-secondary/elma-nasil-yenir-221135ca-f383-474c-a4f5-ad02a45db978.jpg" alt="not found"
+                  className='h-15 w-16 object-cover' />
+                <div className='flex flex-col mr-auto ml-2'>
+                  <b>{item.title}</b>
+                  <span>{item.price}£</span>
+                </div>
               </div>
-            </div>
-
-            <div className='button-item'>
-              <Button type='primary' className='rounded-full' size='small'>
-                <PlusOutlined style={{ fontSize: '10px'}}/>
-              </Button>
-              <span className='px-1'>1</span>
-              <Button type='primary' className='rounded-full' size='small'>
-                <MinusOutlined style={{ fontSize: '10px'}}/>
-              </Button>
-            </div>
-
-          </li>
-
-        </ul>
-      </div>
-
-      <div className='cart-items overflow-auto'>
-        <ul className='cart-list'>
-
-          <li className='cart-item py-2 flex justify-between items-center'>
-
-            <div className='content-item flex justify-between '>
-              <img src="https://i.lezzet.com.tr/images-xxlarge-secondary/elma-nasil-yenir-221135ca-f383-474c-a4f5-ad02a45db978.jpg" alt="not found"
-                className='h-15 w-16 object-cover' />
-              <div className='flex flex-col mr-auto ml-2'>
-                <b>Elma</b>
-                <span>9.99£</span>
+  
+              <div className='button-item'>
+                <Button type='primary' className='rounded-full' size='small'>
+                  <PlusOutlined style={{ fontSize: '8px'}}/>
+                </Button>
+                <span className='px-1'>{item.quantity}</span>
+                <Button type='primary' className='rounded-full' size='small'>
+                  <MinusOutlined style={{ fontSize: '8px'}}/>
+                </Button>
               </div>
-            </div>
-
-            <div className='button-item'>
-              <Button type='primary' className='rounded-full' size='small'>
-                <PlusOutlined style={{ fontSize: '10px'}}/>
-              </Button>
-              <span className='px-1'>1</span>
-              <Button type='primary' className='rounded-full' size='small'>
-                <MinusOutlined style={{ fontSize: '10px'}}/>
-              </Button>
-            </div>
-            
-          </li>
-
-        </ul>
-      </div>
-
+  
+            </li>
+          ))
+        }
+          </ul>
+        </div>
+        
+  
       {/* mt-auto: Bu sınıf, ilgili elemanı 
         diğer elemanların itmesiyle otomatik olarak en alta taşır */}
       <div className='cart-totals mt-auto'>

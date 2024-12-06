@@ -3,7 +3,7 @@ import { addProduct } from "../../redux/cartSlice"
 import { useDispatch, useSelector } from "react-redux"
 
 function ProductItem({ product }) {
-    
+
     //action ları getirmeye yarar
     const dispatch = useDispatch();
     //cart , storeda tanımalana sliceın adıdır. Slice ta tanımlanan isimle bir ilgisi yok
@@ -11,7 +11,7 @@ function ProductItem({ product }) {
 
 
     const handleClick = () => {
-        dispatch(addProduct(product));
+        dispatch(addProduct({...product, quantity:1}));
     }
     console.log("cartıtems: ", cart.cartItems);
     return (

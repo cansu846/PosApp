@@ -9,9 +9,14 @@ import { SearchOutlined,
     CopyOutlined
 } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 // rfce
 function Header() {
+
+  const dispatch = useDispatch();
+  const {cartItems} = useSelector((state)=>state.cart);
+
   return (
     <div className='border-b mb-6'>
        <header className='py-3 ml-5 mr-5 flex items-center justify-between gap-10'>
@@ -34,7 +39,7 @@ function Header() {
            
            {/* Buyuk ekranlarda flex iken küçük ekranlarda gizlenir */}
            <Link to="/cart" className='menu-link md:flex hidden flex-col hover:text-[#40a9ff] '>
-           <Badge count={5}> 
+           <Badge count={cartItems.length}> 
            <span><ShoppingCartOutlined className='md:text-2xl text-xl'/></span>
            </Badge>
            
