@@ -5,13 +5,14 @@ import CartSummary from '../components/cart/CartSummary';
 import { useDispatch, useSelector } from 'react-redux';
 import ProductQuantity from '../components/cart/ProductQuantity';
 import { reset } from '../redux/cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 function CartPage() {
     const [isModalOpen, setIsModelOpen] = useState(false);
 
     const {cartItems} = useSelector((state)=>state.cart)
     const dispatch = useDispatch();
-
+    
     const showModal = () => {
         setIsModelOpen(!isModalOpen);
     }
@@ -99,6 +100,7 @@ function CartPage() {
             <div className='cart-total flex justify-end mt-4'>
                
                 <CartSummary showModal={showModal} />
+                {/* acılacak modal bu componentte */}
                 <CreateInvoice isModalOpen={isModalOpen} showModal={showModal}/>
                 
             </div>

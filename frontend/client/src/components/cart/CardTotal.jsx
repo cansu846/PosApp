@@ -4,9 +4,13 @@ import { ClearOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteProduct, increase, decrease, reset } from '../../redux/cartSlice';
 import ProductQuantity from './ProductQuantity';
+import { useNavigate } from 'react-router-dom';
 
 function CardTotal() {
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cart = useSelector((state) => state.cart);
   return (
     // max-h:
@@ -92,6 +96,7 @@ function CardTotal() {
             className='w-full mt-3'
             size='large'
             disabled={cart.cartItems.length === 0}
+            onClick={()=> navigate("/cart")}
           >
             Create Order
           </Button>

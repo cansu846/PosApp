@@ -6,6 +6,7 @@ function InvoicePage() {
 
     const [isModalOpen, setIsModelOpen] = useState(false);
     const [bills, setBills] = useState([]);
+    const [customer, setCustomer] = useState({});
 
     const showModal = () => {
         setIsModelOpen(!isModalOpen);
@@ -22,18 +23,18 @@ function InvoicePage() {
         }
     }
 
-    useState(()=>{
+    useState(() => {
         getBills();
     }, []);
 
-    console.log("get bills:"+ bills)
+    console.log("get bills:" + bills)
 
     const columns = [
         {
             title: "Customer Name",
             dataIndex: "customerName",
             key: "customerName",
-           
+
         },
         {
             title: "Phone Number",
@@ -44,8 +45,10 @@ function InvoicePage() {
             title: "CreateAt ",
             dataIndex: "createdAt",
             key: "createdAt",
-            render: (text)=>{
-              return <span>{text.substring(0, 10)}</span>
+            //record, o satırın tamamına erişim sağlar. Yani, dataSource içindeki bir nesnedir.
+            //dataIndex ile eşlesen hücreye ait değerdir.
+            render: (text) => {
+                return <span>{text.substring(0, 10)}</span>
             }
         },
         {
@@ -65,20 +68,33 @@ function InvoicePage() {
             title: "Actions",
             dataIndex: "action",
             key: "action",
-            render: (text)=>{
-              return <Button type="link" className="pl-0" onClick={showModal}>Print</Button>
+            //record, o satırın tamamına erişim sağlar. Yani, dataSource içindeki bir nesnedir.
+            render: (text, record) => {
+                return <Button
+                    type="link"
+                    className="pl-0"
+                    onClick={() => {
+                        showModal();
+                        setCustomer(record);
+                        console.log("record:", record);
+                        console.log("customer:", customer);
+                    }}
+                >
+                    Print
+                </Button>
             }
-          },
+        },
     ]
 
     return (
         <div className='mx-4'>
             <h1 className='flex justify-center font-bold text-lg pb-4' >Invoce</h1>
             <div className=''>
-                <Table dataSource={bills} columns={columns} className='rounded-md' pagination={false} />
+            {/* Eğer tablo sütunları toplamda belirlenen piksel genişliğinden büyükse, kaydırma çubukları aktif olur. */}
+                <Table dataSource={bills} columns={columns} className='rounded-md' pagination={false} scroll={{x:1000, y:300}}/>
             </div>
 
-            <div className='cart-total flex justify-end mt-4'>
+            {/* <div className='cart-total flex justify-end mt-4'>
 
                 <Card className="w-72">
                     <Button
@@ -90,8 +106,9 @@ function InvoicePage() {
                         Print
                     </Button>
                 </Card>
-            </div>
-            <PrintInvoice isModalOpen={isModalOpen} showModal={showModal} />
+            </div> */}
+
+            <PrintInvoice isModalOpen={isModalOpen} showModal={showModal} customer={customer} />
 
         </div>
 

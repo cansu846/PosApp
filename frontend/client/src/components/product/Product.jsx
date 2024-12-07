@@ -41,7 +41,7 @@ function Product({ products, setProducts, categories }) {
                 //                 <span>{product.price}£</span>
                 //             </div>
                 //         </div>
-                    ))
+                    )).reverse()
                 }
 
                 <div

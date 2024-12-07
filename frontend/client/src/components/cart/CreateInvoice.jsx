@@ -4,6 +4,7 @@ import CartSummary from './CartSummary';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { reset } from '../../redux/cartSlice';
+
 function CartInvoice({ isModalOpen, showModal }) {
 
     const cart = useSelector((state) => state.cart);
@@ -31,6 +32,8 @@ function CartInvoice({ isModalOpen, showModal }) {
             if (response.status === 200) {
                 message.success("Invoice created successfully.");
                 dispatch(reset());
+
+                //Invoicepage yönlendirir
                 navigate("/invoice");
             }
         } catch (error) {
@@ -41,7 +44,7 @@ function CartInvoice({ isModalOpen, showModal }) {
 
     return (
         <div>
-            <Modal title="Create Invoice" open={isModalOpen} onOk={showModal} onCancel={showModal}>
+            <Modal title="Create Invoice" open={isModalOpen} onOk={showModal} onCancel={showModal} footer={false}>
                 <div>
                     <Form
                         layout={'vertical'}
