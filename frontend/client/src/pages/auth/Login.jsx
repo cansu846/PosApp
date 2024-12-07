@@ -16,6 +16,7 @@ const Login = () => {
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
       const user = await res.json();
+      
       if (res.status === 200) {
         localStorage.setItem(
           "posUser",
@@ -27,7 +28,7 @@ const Login = () => {
         message.success("Giriş işlemi başarılı.");
 
         navigate("/");
-        
+
       } else if (res.status === 404) {
         message.error("Kullanıcı bulunamadı!");
       } else if (res.status === 403) {

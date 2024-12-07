@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input, Badge } from 'antd';
+import { Input, Badge, message } from 'antd';
 import {
   SearchOutlined,
   HomeOutlined,
@@ -9,7 +9,7 @@ import {
   LogoutOutlined,
   CopyOutlined
 } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // rfce
@@ -17,6 +17,15 @@ function Header() {
 
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
+  const navigate = useNavigate();
+
+  const logOut = () => {
+    if (window.confirm("Çıkış yapmak istediğinize emin misiniz?")) {
+      localStorage.removeItem("posUser");
+      navigate("/login");
+      message.success("Çıkış işlemi başarılı.");
+    }
+  };
 
   return (
     <div className='border-b mb-6'>
@@ -63,10 +72,12 @@ function Header() {
             <span className='md:text-xs text-[10px]'>Statistic</span>
           </Link>
 
-          <Link to="/" className='flex flex-col hover:text-[#40a9ff]'>
+         <div onClick={logOut}> 
+         <Link to="/" className='flex flex-col hover:text-[#40a9ff]'>
             <span><LogoutOutlined className='md:text-2xl text-xl' /></span>
             <span className='md:text-xs text-[10px]'>Exit</span>
           </Link>
+         </div>
 
 
         </div>
