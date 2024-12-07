@@ -1,9 +1,42 @@
 import React from 'react'
-import { Button, Card, Form, Input, Modal, Select } from 'antd';
+import { Button, Card, Form, Input, message, Modal, Select } from 'antd';
+import CartSummary from './CartSummary';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { reset } from '../../redux/cartSlice';
 function CartInvoice({ isModalOpen, showModal }) {
 
-    const onFinish = (values) => {
-        console.log(values);
+    const cart = useSelector((state) => state.cart);
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const onFinish = async (values) => {
+        console.log("create incoice: ", values);
+        try {
+            const response = await fetch("http://localhost:5000/api/bill/add",
+                {
+                    method: "POST",
+                    body: JSON.stringify({
+                        ...values,
+                        subtotal: cart.total,
+                        taxt: ((cart.total * cart.tax) / 100).toFixed(2),
+                        totalAmount: (cart.total + (cart.total * cart.tax) / 100).toFixed(2),
+                        cartItems: cart.cartItems,
+                    }),
+
+                    headers: { "Content-type": "application/json; charset=UTF-8" },
+
+                }); //fetch end
+
+            if (response.status === 200) {
+                message.success("Invoice created successfully.");
+                dispatch(reset());
+                navigate("/invoice");
+            }
+        } catch (error) {
+            message.danger("Something went wrong..");
+            console.log(error);
+        }
     }
 
     return (
@@ -14,24 +47,24 @@ function CartInvoice({ isModalOpen, showModal }) {
                         layout={'vertical'}
                         onFinish={onFinish}
                     >
-                        <Form.Item label="Name" name={"curtomerName"}
-                         rules={[
-                            {
-                              required: true,
-                              message: "Username is required",
-                            },
-                          ]}
-                          >
+                        <Form.Item label="Name" name={"customerName"}
+                            rules={[
+                                {
+                                    required: true,
+                                    message: "Username is required",
+                                },
+                            ]}
+                        >
                             <Input placeholder="Customer name" />
                         </Form.Item>
-                        <Form.Item label="Phone Number" name={"phoneNumber"}
-                         rules={[{ required: true }]}
-                         >
+                        <Form.Item label="Phone Number" name={"customerPhoneNumber"}
+                            rules={[{ required: true }]}
+                        >
                             <Input placeholder="Phone" />
                         </Form.Item>
                         <Form.Item label="Payment Method" name={"paymentMode"}
-                          rules={[{ required: true }]}
-                          >
+                            rules={[{ required: true }]}
+                        >
                             <Select placeholder="Please select payment method">
                                 <Select.Option value="bankcard">Bank card</Select.Option>
                                 <Select.Option value="creditcard">Credit card</Select.Option>
@@ -39,25 +72,41 @@ function CartInvoice({ isModalOpen, showModal }) {
                         </Form.Item>
 
                         <div className='flex justify-end'>
+                            {/* submit butonu çalışmadıgı için ayrı olarak tanımlamak zorunda kaldım */}
+                            {/* <CartSummary  /> */}
+
                             <Card title="" style={{ width: 300 }}>
                                 <div className='flex flex-row justify-between'>
                                     <p className='font-bold'>Subtotal</p>
-                                    <p>30£</p>
+                                    <span>{cart.total > 0 ? cart.total.toFixed(2) : 0}₺</span>
                                 </div>
 
                                 <div className='flex flex-row justify-between py-2'>
-                                    <p className='font-bold'>KDV %8</p>
-                                    <p className='text-red-700'>+30£</p>
+                                    <b>KDV %{cart.tax}</b>
+                                    <span className='text-red-700'>
+                                        {(cart.total * cart.tax) / 100 > 0
+                                            ? `+${((cart.total * cart.tax) / 100).toFixed(2)}`
+                                            : 0}
+                                        ₺
+                                    </span>
                                 </div>
 
                                 <div className='flex flex-row justify-between'>
                                     <p className='font-bold'>Total</p>
-                                    <p className='text-green-700'>60£</p>
+                                    <span className=''>
+                                        {cart.total + (cart.total * cart.tax) / 100 > 0
+                                            ? (cart.total + (cart.total * cart.tax) / 100).toFixed(2)
+                                            : 0}
+                                        ₺
+                                    </span>
                                 </div>
-                               <div className='flex justify-end mt-4'> 
-                               <Button type='primary' size='middle'
-                                    className='' onClick={showModal} htmlType="submit" >Create Order </Button>
-                               </div>
+                                <Button type='primary' size='middle'
+                                    className='w-full mt-4 '
+                                    disabled={cart.cartItems.length === 0}
+                                    htmlType='submit'
+                                >
+                                    Create Order
+                                </Button>
                             </Card>
                         </div>
                     </Form>

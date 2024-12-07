@@ -9,7 +9,7 @@ const BillSchema = mongoose.Schema({
    subTotal: {type: Number, require: true},
    tax: {type: Number, require: true},
    totalAmount: {type: Number, require: true}
-}, {timeStamp: true});
+}, {timestamps: true});
 
 const Bill = mongoose.model("bills",BillSchema);
 module.exports=Bill;

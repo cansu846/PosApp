@@ -3,50 +3,79 @@ import PrintInvoice from '../components/invoice/PrintInvoice';
 import { Button, Card, Table } from 'antd';
 
 function InvoicePage() {
+
     const [isModalOpen, setIsModelOpen] = useState(false);
+    const [bills, setBills] = useState([]);
 
     const showModal = () => {
         setIsModelOpen(!isModalOpen);
     }
 
-    const dataSource = [
-        {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
-        },
-        {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-    ]
+    const getBills = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/api/bill/get-all")
+            const json = await response.json()
+            setBills(json);
+            //console.log("get bills:"+ json)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useState(()=>{
+        getBills();
+    }, []);
+
+    console.log("get bills:"+ bills)
 
     const columns = [
         {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
+            title: "Customer Name",
+            dataIndex: "customerName",
+            key: "customerName",
+           
         },
         {
-            title: 'Age',
-            dataIndex: 'age',
-            key: 'age',
+            title: "Phone Number",
+            dataIndex: "customerPhoneNumber",
+            key: "customerPhoneNumber",
         },
         {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
+            title: "CreateAt ",
+            dataIndex: "createdAt",
+            key: "createdAt",
+            render: (text)=>{
+              return <span>{text.substring(0, 10)}</span>
+            }
         },
+        {
+            title: "Payment Mode",
+            dataIndex: "paymentMode",
+            key: "paymentMode",
+        },
+        {
+            title: "Total Amount",
+            dataIndex: "totalAmount",
+            key: "totalAmount",
+            // render: (text)=>{
+            //   return <span>{text}₺</span>
+            // }
+        },
+        {
+            title: "Actions",
+            dataIndex: "action",
+            key: "action",
+            render: (text)=>{
+              return <Button type="link" className="pl-0" onClick={showModal}>Print</Button>
+            }
+          },
     ]
 
     return (
         <div className='mx-4'>
             <h1 className='flex justify-center font-bold text-lg pb-4' >Invoce</h1>
             <div className=''>
-                <Table dataSource={dataSource} columns={columns} className='rounded-md' pagination={false} />
+                <Table dataSource={bills} columns={columns} className='rounded-md' pagination={false} />
             </div>
 
             <div className='cart-total flex justify-end mt-4'>
@@ -65,8 +94,8 @@ function InvoicePage() {
             <PrintInvoice isModalOpen={isModalOpen} showModal={showModal} />
 
         </div>
-           
-   
+
+
     )
 }
 

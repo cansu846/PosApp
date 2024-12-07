@@ -3,6 +3,7 @@ import React from 'react'
 import { ClearOutlined, PlusOutlined, MinusOutlined } from '@ant-design/icons'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteProduct, increase, decrease, reset } from '../../redux/cartSlice';
+import ProductQuantity from './ProductQuantity';
 
 function CardTotal() {
   const dispatch = useDispatch();
@@ -43,13 +44,7 @@ function CardTotal() {
                 </div>
 
                 <div className='button-item'>
-                  <Button type='primary' className='rounded-full' size='small' onClick={() => dispatch(increase(item))}>
-                    <PlusOutlined style={{ fontSize: '8px' }} />
-                  </Button>
-                  <span className='px-1'>{item.quantity}</span>
-                  <Button type='primary' className='rounded-full' size='small' onClick={() => dispatch(decrease(item))}>
-                    <MinusOutlined style={{ fontSize: '8px' }} />
-                  </Button>
+                  <ProductQuantity item={item}/>
                 </div>
 
               </li>
