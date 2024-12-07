@@ -1,39 +1,48 @@
 import { Card, Table } from 'antd'
 import React, { useEffect, useState } from 'react'
 import StatisticCard from "../components/statistic/StatisticCard"
-import { Area} from '@ant-design/charts';
-import { Pie } from '@ant-design/charts' ;     
-import { Donut } from '@ant-design/charts' ;   
+import { Area, Line } from '@ant-design/charts';
+import { Pie } from '@ant-design/charts';
+import { Donut } from '@ant-design/charts';
+import BaseChart from '../components/statistic/BaseChart';
+import DonatChart from '../components/statistic/DonatChart';
+
 
 function StatisticPage() {
 
     const [data, setData] = useState([]);
-    useEffect(() => {
-        asyncFetch();
-    }, []);
+    const [products, setProducts] = useState([]);
+
+    const getProducts = async () => {
+        try {
+            const res = await fetch("http://localhost:5000/api/product/get-all");
+            const data = await res.json();
+            setProducts(data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     const asyncFetch = () => {
-        fetch('https://gw.alipayobjects.com/os/antfincdn/YdLK%24VvSkW/fireworks-sales.json')
+        fetch("http://localhost:5000/api/bill/get-all")
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => {
                 console.log('fetch data failed', error);
             });
     };
-    const config = {
-        title: {
-            visible: true,
-            text: 'Basic area map',
-        },
-        data,
-        xField: 'Date',
-        yField: 'scales',
-        xAxis: {
-            type: 'dateTime',
-            tickCount: 5,
-        },
+
+    useEffect(() => {
+        getProducts();
+        asyncFetch();
+    }, []);
+
+    const totalAmount = () => {
+        //data.reduce metodu, bir dizideki elemanları bir işleve göre biriktirerek tek bir değer oluşturur.
+        //Başlangıç Değeri (total için): 0 (Son parametre olarak veriliyor).
+        const amount = data.reduce((total, item) => item.totalAmount + total, 0);
+        return `${amount.toFixed(2)}₺`;
     };
-
-
 
     return (
         <div className='mx-4'>
@@ -44,29 +53,29 @@ function StatisticPage() {
 
                 <StatisticCard
                     title={"Total Customer"}
-                    amount={"10"}
+                    amount={data?.length}
                     img={"images/user.png"}
                 />
                 <StatisticCard
                     title={"Total Invoice"}
-                    amount={"660.96 ₺"}
+                    amount={totalAmount()}
                     img={"images/money.png"}
                 />
                 <StatisticCard
                     title={"Total Sale"}
-                    amount={"6"}
+                    amount={data?.length}
                     img={"images/sale.png"}
                 />
                 <StatisticCard
                     title={"Total Product"}
-                    amount={"28"}
+                    amount={products?.length}
                     img={"images/product.png"}
                 />
             </div>
 
-            <div>
-                <div> < Area {...config} /></div>
-            <div></div>
+            <div className='flex flex-col md:flex-row md:justify-between items-center p-10'>
+                <div> <BaseChart data={data} /></div>
+                <div><DonatChart data={data} /></div>
             </div>
 
         </div>

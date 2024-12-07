@@ -6,7 +6,7 @@ const BillSchema = mongoose.Schema({
    customerPhoneNumber: {type: String, require: true},
    paymentMode: {type: String, require: true},
    cartItems: {type: Array, require: true},
-   subTotal: {type: Number, require: true},
+   subtotal: {type: Number, require: true},
    tax: {type: Number, require: true},
    totalAmount: {type: Number, require: true}
 }, {timestamps: true});
