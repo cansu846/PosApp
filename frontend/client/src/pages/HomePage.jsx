@@ -4,7 +4,7 @@ import Category from '../components/category/Category';
 import Product from '../components/product/Product';
 import CardTotal from '../components/cart/CardTotal';
 
-function HomePage() {
+function HomePage({search}) {
 
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
@@ -72,6 +72,7 @@ function HomePage() {
             categories={categories}
             //filtrelenen product lar gösterilir 
             filteredProduct={filteredProduct}
+            search={search}
           />
         </div>
         <div className='cardtotal'>

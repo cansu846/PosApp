@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import HomePage from './pages/HomePage';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import CartPage from './pages/CartPage';
@@ -13,17 +13,20 @@ import ProductPage from './pages/ProductPage';
 
 function App() {
 
+  const [search, setSearch]=useState("");
+  console.log("search:", search);
+  
   return (
     <>
 
       <BrowserRouter>
-        <Header />
+        <Header setSearch={setSearch} />
         <Routes >
           <Route
             path="/"
             element={
               <RouteControl>
-                <HomePage />
+                <HomePage search={search}/>
               </RouteControl>
             }
           />

@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 // rfce
-function Header() {
+function Header({setSearch}) {
 
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
@@ -36,7 +36,11 @@ function Header() {
           </Link>
         </div>
         <div className='header-search flex-1  flex justify-center'>
-          <Input size="large" placeholder="Search..." className="rounded-full max-w-[800px]" prefix={<SearchOutlined />} />
+          <Input size="large"
+            placeholder="Search..."
+            className="rounded-full max-w-[800px]"
+            onChange={(e)=>setSearch(e.target.value.toLowerCase())}
+            prefix={<SearchOutlined />} />
 
         </div>
         <div className='menu-links flex justify-between items-center gap-8
@@ -72,12 +76,12 @@ function Header() {
             <span className='md:text-xs text-[10px]'>Statistic</span>
           </Link>
 
-         <div onClick={logOut}> 
-         <Link to="/" className='flex flex-col hover:text-[#40a9ff]'>
-            <span><LogoutOutlined className='md:text-2xl text-xl' /></span>
-            <span className='md:text-xs text-[10px]'>Exit</span>
-          </Link>
-         </div>
+          <div onClick={logOut}>
+            <Link to="/" className='flex flex-col hover:text-[#40a9ff]'>
+              <span><LogoutOutlined className='md:text-2xl text-xl' /></span>
+              <span className='md:text-xs text-[10px]'>Exit</span>
+            </Link>
+          </div>
 
 
         </div>
