@@ -8,6 +8,7 @@ function HomePage() {
 
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
+  const [filteredProduct, setFilteredProduct] = useState([]);
 
   const getCategories = async () => {
     try {
@@ -17,10 +18,10 @@ function HomePage() {
       }
       const json = await response.json();
       console.log(json);
-      setCategories(json.map((category)=>(
-        {...category, value: category.title}
+      setCategories(json.map((category) => (
+        { ...category, value: category.title }
       ))
-  );
+      );
     } catch (error) {
       console.error(error.message);
     }
@@ -43,6 +44,7 @@ function HomePage() {
   useEffect(() => {
     getCategories();
     getProducts();
+
   }, []);
 
 
@@ -55,10 +57,22 @@ function HomePage() {
 
         <div className='category overflow-auto 
       max-h-[calc(100vh_-_112px)]'>
-          <Category categories={categories} setCategories={setCategories}/>
+          <Category
+            categories={categories}
+            setCategories={setCategories}
+            //Kategori adına göre filtreleme yapılacagı için setFiltered props olarak gönderilir.
+            setFilteredProduct={setFilteredProduct} 
+            filteredProduct={filteredProduct}
+            products={products}/>
         </div>
         <div className='product flex-[8] overflow-auto  max-h-[calc(100vh_-_112px)]'>
-          <Product products={products} setProducts={setProducts} categories={categories} />
+          <Product
+            products={products}
+            setProducts={setProducts}
+            categories={categories}
+            //filtrelenen product lar gösterilir 
+            filteredProduct={filteredProduct}
+          />
         </div>
         <div className='cardtotal'>
           <CardTotal />

@@ -6,7 +6,7 @@ import ProductItem from "./ProductItem";
 import { addProduct } from "../../redux/cartSlice"
 import { useDispatch, useSelector } from "react-redux"
 
-function Product({ products, setProducts, categories }) {
+function Product({ products, setProducts, categories, filteredProduct }) {
 
     const [isAddProductModalOpen, setIsAddProductModalOpen] = useState(false);
     //URL'leri değiştirme veya farklı rotalara geçiş yapma işlemleri için tercih edilir.
@@ -20,27 +20,29 @@ function Product({ products, setProducts, categories }) {
     }
 
     return (
+
+
         <div>
             <div className="products-wrap grid grid-cols-card gap-2">
                 {
 
-                    products.map((product) => (
+                    filteredProduct.map((product) => (
 
                         <ProductItem product={product} key={product._id} />
 
-                //         <div className='product-item border hover:shadow-lg transition-all
-                // cursor-point select-none' onClick={handleClick}>
-                //             <div className='product-img'>
-                //                 <img
-                //                     src="https://i.lezzet.com.tr/images-xxlarge-secondary/elma-nasil-yenir-221135ca-f383-474c-a4f5-ad02a45db978.jpg"
-                //                     alt=""
-                //                     className='h-28 object-cover w-full border-b' />
-                //             </div>
-                //             <div className='product-info flex flex-col items-center p-1'>
-                //                 <span className='font-bold'>{product.title}</span>
-                //                 <span>{product.price}£</span>
-                //             </div>
-                //         </div>
+                        //         <div className='product-item border hover:shadow-lg transition-all
+                        // cursor-point select-none' onClick={handleClick}>
+                        //             <div className='product-img'>
+                        //                 <img
+                        //                     src="https://i.lezzet.com.tr/images-xxlarge-secondary/elma-nasil-yenir-221135ca-f383-474c-a4f5-ad02a45db978.jpg"
+                        //                     alt=""
+                        //                     className='h-28 object-cover w-full border-b' />
+                        //             </div>
+                        //             <div className='product-info flex flex-col items-center p-1'>
+                        //                 <span className='font-bold'>{product.title}</span>
+                        //                 <span>{product.price}£</span>
+                        //             </div>
+                        //         </div>
                     )).reverse()
                 }
 
@@ -55,6 +57,7 @@ function Product({ products, setProducts, categories }) {
                     <EditOutlined className="text-white md:text-2xl" />
                 </div>
 
+                {/* modal componenti */}
                 <Add isAddProductModalOpen={isAddProductModalOpen}
                     handleIsAddProductModalOpen={handleIsAddProductModalOpen}
                     categories={categories} />

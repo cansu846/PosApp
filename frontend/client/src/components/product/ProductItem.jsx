@@ -14,15 +14,16 @@ function ProductItem({ product }) {
         dispatch(addProduct({...product, quantity:1}));
     }
     
-    console.log("cartıtems: ", cart.cartItems);
+    console.log("products: ", product);
     return (
         <div className='product-item border hover:shadow-lg transition-all
                 cursor-point select-none' onClick={handleClick}>
             <div className='product-img'>
                 <img
-                    src="https://i.lezzet.com.tr/images-xxlarge-secondary/elma-nasil-yenir-221135ca-f383-474c-a4f5-ad02a45db978.jpg"
-                    alt=""
-                    className='h-28 object-cover w-full border-b' />
+                    // src="https://i.lezzet.com.tr/images-xxlarge-secondary/elma-nasil-yenir-221135ca-f383-474c-a4f5-ad02a45db978.jpg"
+                    src={product.img}
+                    alt={product.title}
+                    className='h-28  object-cover  w-full border-b' />
             </div>
             <div className='product-info flex flex-col items-center p-1'>
                 <span className='font-bold'>{product.title}</span>
