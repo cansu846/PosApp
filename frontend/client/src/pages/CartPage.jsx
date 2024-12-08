@@ -17,7 +17,8 @@ function CartPage() {
     const showModal = () => {
         setIsModelOpen(!isModalOpen);
     }
-
+    
+//for search
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
     const searchInput = useRef(null);
@@ -127,7 +128,7 @@ function CartPage() {
         //     text
         //   ),
       });
-
+//search end
 
     const columns = [
         {
