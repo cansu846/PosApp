@@ -17,7 +17,7 @@ function CartPage() {
     const showModal = () => {
         setIsModelOpen(!isModalOpen);
     }
-    
+
 //for search
     const [searchText, setSearchText] = useState('');
     const [searchedColumn, setSearchedColumn] = useState('');
@@ -135,9 +135,9 @@ function CartPage() {
             title: "Product Image",
             dataIndex: "img",
             width: '2%',
-            render: (_, record) => {
+            render: (text, record) => {
                 return (
-                    <img src="https://i.lezzet.com.tr/images-xxlarge-secondary/elma-nasil-yenir-221135ca-f383-474c-a4f5-ad02a45db978.jpg"
+                    <img src={text}
                         alt="" className="w-full h-20 object-cover" />
                 );
             },
