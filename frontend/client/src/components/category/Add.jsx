@@ -10,7 +10,7 @@ function Add({ categories, setCategories, isAddCategoryModalOpen, handleIsAddCat
     //this is use for post operation
     const onFinish = (values) => {
         try {
-            fetch("http://localhost:5000/api/category/add", {
+            fetch(process.env.REACT_APP_SERVER_URL + "/api/category/add", {
                 method: "POST",
                 //When sending data to a web server, the data has to be a string.
                 //Convert a JavaScript object into a string with 

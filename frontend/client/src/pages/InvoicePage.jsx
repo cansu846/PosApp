@@ -16,7 +16,7 @@ function InvoicePage() {
 
     const getBills = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/bill/get-all")
+            const response = await fetch(process.env.REACT_APP_SERVER_URL + "/api/bill/get-all")
             const json = await response.json()
             setBills(json);
             //console.log("get bills:"+ json)

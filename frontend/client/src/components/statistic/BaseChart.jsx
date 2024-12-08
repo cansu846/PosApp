@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Area, Line } from '@ant-design/charts';
+import React from 'react'
+import { Area, Line } from '@ant-design/plots';
 
 function BaseChart({data}) {
 

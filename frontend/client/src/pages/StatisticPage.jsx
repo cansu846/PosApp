@@ -1,11 +1,7 @@
-import { Card, Table } from 'antd'
 import React, { useEffect, useState } from 'react'
 import StatisticCard from "../components/statistic/StatisticCard"
-import { Area, Line } from '@ant-design/charts';
-import { Pie } from '@ant-design/charts';
-import { Donut } from '@ant-design/charts';
-import BaseChart from '../components/statistic/BaseChart';
-import DonatChart from '../components/statistic/DonatChart';
+// import BaseChart from '../components/statistic/BaseChart';
+// import DonatChart from '../components/statistic/DonatChart';
 
 
 function StatisticPage() {
@@ -16,7 +12,7 @@ function StatisticPage() {
 
     const getProducts = async () => {
         try {
-            const res = await fetch("http://localhost:5000/api/product/get-all");
+            const res = await fetch(process.env.REACT_APP_SERVER_URL + "/api/product/get-all");
             const data = await res.json();
             setProducts(data);
         } catch (error) {
@@ -25,7 +21,7 @@ function StatisticPage() {
     };
 
     const asyncFetch = () => {
-        fetch("http://localhost:5000/api/bill/get-all")
+        fetch(process.env.REACT_APP_SERVER_URL + "/api/bill/get-all")
             .then((response) => response.json())
             .then((json) => setData(json))
             .catch((error) => {
@@ -75,8 +71,8 @@ function StatisticPage() {
             </div>
 
             <div className='flex flex-col md:flex-row md:justify-between items-center p-10'>
-                <div> <BaseChart data={data} /></div>
-                <div><DonatChart data={data} /></div>
+                {/* <div> <BaseChart data={data} /></div>
+                <div><DonatChart data={data} /></div> */}
             </div>
 
         </div>

@@ -56,7 +56,7 @@ function Product({ products, setProducts, categories, filteredProduct, search })
                     <PlusOutlined className="text-white md:text-2xl" />
                 </div>
                 <div className="product-item border hover:shadow-lg cursor-pointer transition-all select-none
-                 bg-orange-800 flex justify-center items-center hover:opacity-90 min-h-[180]" onClick={() => navigate("/product")}>
+                 bg-orange-800 flex justify-center items-center hover:opacity-90 min-h-[180px]" onClick={() => navigate("/product")}>
                     <EditOutlined className="text-white md:text-2xl" />
                 </div>
 

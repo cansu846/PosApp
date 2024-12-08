@@ -14,7 +14,7 @@ function CartInvoice({ isModalOpen, showModal }) {
     const onFinish = async (values) => {
         console.log("create incoice: ", values);
         try {
-            const response = await fetch("http://localhost:5000/api/bill/add",
+            const response = await fetch(process.env.REACT_APP_SERVER_URL + "/api/bill/add",
                 {
                     method: "POST",
                     body: JSON.stringify({

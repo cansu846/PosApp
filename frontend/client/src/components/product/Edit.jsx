@@ -15,7 +15,7 @@ function Edit() {
     const [form] = Form.useForm();
 
     const getProducts = async () => {
-        const url = "http://localhost:5000/api/product/get-all";
+        const url = process.env.REACT_APP_SERVER_URL + "/api/product/get-all";
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -31,7 +31,7 @@ function Edit() {
     }
 
     const getCategories = async () => {
-        const url = "http://localhost:5000/api/category/get-all";
+        const url = process.env.REACT_APP_SERVER_URL + "/api/category/get-all";
         try {
             const response = await fetch(url);
             if (!response.ok) {
@@ -62,7 +62,7 @@ function Edit() {
         console.log("onfinish:", values)
         console.log("EditingItem :", editingItem, )
         try {
-            fetch("http://localhost:5000/api/product/update", {
+            fetch(process.env.REACT_APP_SERVER_URL + "/api/product/update", {
                 method: "PUT",
                 //When sending data to a web server, the data has to be a string.
                 //Convert a JavaScript object into a string with 
@@ -92,7 +92,7 @@ function Edit() {
     const deleteProduct = (id) => {
         if (window.confirm("Emin misiniz?")) {
             try {
-                fetch("http://localhost:5000/api/product/delete", {
+                fetch(process.env.REACT_APP_SERVER_URL + "/api/product/delete", {
                     method: "DELETE",
                     body: JSON.stringify({ productId: id }),
                     headers: { "Content-type": "application/json; charset=UTF-8" },

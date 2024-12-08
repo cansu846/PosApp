@@ -12,7 +12,7 @@ function HomePage({search}) {
 
   const getCategories = async () => {
     try {
-      var response = await fetch("http://localhost:5000/api/category/get-all");
+      var response = await fetch(process.env.REACT_APP_SERVER_URL + "/api/category/get-all");
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
@@ -29,7 +29,7 @@ function HomePage({search}) {
 
   const getProducts = async () => {
     try {
-      var response = await fetch("http://localhost:5000/api/product/get-all");
+      var response = await fetch(process.env.REACT_APP_SERVER_URL + "/api/product/get-all");
       if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }

@@ -17,7 +17,7 @@ function Edit({ isEditCategoryModalOpen,
     const onFinish = (values) => {
         console.log("onfinish:", values)
         try {
-            fetch("http://localhost:5000/api/category/update", {
+            fetch(process.env.REACT_APP_SERVER_URL + "/api/category/update", {
                 method: "PUT",
                 //When sending data to a web server, the data has to be a string.
                 //Convert a JavaScript object into a string with 
@@ -46,7 +46,7 @@ function Edit({ isEditCategoryModalOpen,
     const deleteCategory = (id) => {
         if (window.confirm("Emin misiniz?")) {
           try {
-            fetch("http://localhost:5000/api/category/delete", {
+            fetch(process.env.REACT_APP_SERVER_URL + "/api/category/delete", {
               method: "DELETE",
               body: JSON.stringify({ categoryId: id }),
               headers: { "Content-type": "application/json; charset=UTF-8" },
