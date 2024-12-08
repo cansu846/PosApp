@@ -6,7 +6,8 @@ const dotenv = require("dotenv");
 //post işlemi sonucu objenin fieldları db eklenmedi, bu yüzden cors kullanıldı
 const cors = require("cors");
 const app = express();
-const port = 5000;
+//port belirtilmemişse varyayılan 5000 de çalışacak
+const port = process.env.PORT || 5000;
 
 //routes
 

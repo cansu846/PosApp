@@ -39,7 +39,7 @@ function CardTotal() {
                       dispatch(deleteProduct(item))
                     }
                   }}>
-                  <img src="https://i.lezzet.com.tr/images-xxlarge-secondary/elma-nasil-yenir-221135ca-f383-474c-a4f5-ad02a45db978.jpg" alt="not found"
+                  <img src={item.img} alt="not found"
                     className='h-15 w-16 object-cover' />
                   <div className='flex flex-col mr-auto ml-2'>
                     <b>{item.title}</b>
