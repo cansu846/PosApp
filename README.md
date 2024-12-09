@@ -11,7 +11,11 @@ MERN Stack: MongoDB, Expressjs, Reactjs ve Nodejs 'in baş harflerinden oluşur.
 - Render web sitesi aracılıgıyla api ve client projeleri deploy edilmiştir. Aşagıdaki url ler aracılıgıyla projenin canlı haline ulaşabilirsiniz.
   - Frontend için url: https://cansukocaoglu55-pos-application-client.onrender.com
   - Api için url: https://cansukocaoglu55-pos-application.onrender.com
-    
+    - Api tarafında aşagdaki url leri kullanarak verilere ulaşabilirisniz:
+      - https://cansukocaoglu55-pos-application.onrender.com/api/category/get-all
+      - https://cansukocaoglu55-pos-application.onrender.com/api/product/get-all
+      - https://cansukocaoglu55-pos-application.onrender.com/api/bill/get-all
+      - https://cansukocaoglu55-pos-application.onrender.com/api/user/get-all
 - Menu Alanı:
   - Arama cubugu kullanılarak ürün adına göre filtreleme yapılır ve ürünler listelenmesi sağlanır.
 - Kategori Alanı:
